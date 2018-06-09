@@ -25,6 +25,9 @@ import com.imooc.dto.User;
 import com.imooc.dto.UserQueryCondition;
 import com.imooc.exception.UserNotExistException;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 /**
  *@date 2018年5月25日-下午10:25:33
  *@author fu yanliang
@@ -79,6 +82,7 @@ public class UserController {
 	
 	@GetMapping
 	@JsonView(User.UserSimpleView.class)
+	@ApiOperation(value="用户查询服务")
 	public List<User> query(UserQueryCondition condiction/*@RequestParam(value ="username" ,required = false,defaultValue = "tom") String nickname,*/
 			,@PageableDefault(page = 2,size = 17,sort="username,asc") Pageable page){
 		
@@ -97,15 +101,15 @@ public class UserController {
 	
 	@GetMapping("/{id:\\d+}")
 	@JsonView(User.UserDetailView.class)
-	public User getInfo(@PathVariable ( name = "id") String idxxx) {
+	public User getInfo(@ApiParam("用户id")@PathVariable ( name = "id") String idxxx) {
 		
-		throw new UserNotExistException(idxxx);
+//		throw new UserNotExistException(idxxx);
 		
-//		System.out.println("进入getInfo服务");
+		System.out.println("进入getInfo服务");
 		
-//		User user = new User();
-//		user.setUsername("tom");
-//		return user;
+		User user = new User();
+		user.setUsername("tom");
+		return user;
 	}
 	
 }
