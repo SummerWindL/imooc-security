@@ -3,6 +3,23 @@
 `day06 拦截器`</br>
 `day07 wiremock`</br>
 
+### 使用swagger2开发接口</br>
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger2</artifactId>
+    <version>2.7.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger-ui</artifactId>
+    <version>2.7.0</version>
+</dependency>
+
+集成这两个工具
+
 #### 异步处理REST服务</br>
 
 1、使用Runnable异步处理Rest服务</br>
