@@ -3,6 +3,14 @@
 `day06 拦截器`</br>
 `day07 wiremock`</br>
 
+## 使用wiremock伪造服务
+服务端：[wiremock-standalone-2.18.0.jar](http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.18.0/wiremock-standalone-2.18.0.jar)</br>
+**指定端口启动服务**
+$ java -jar wiremock-standalone-2.18.0.jar --port 8062</br>
+
+客户端：
+[MockServer]()
+
 ### 使用swagger2开发接口</br>
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
 <dependency>
