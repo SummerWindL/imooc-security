@@ -9,7 +9,7 @@
 $ java -jar wiremock-standalone-2.18.0.jar --port 8062</br>
 
 客户端：
-[MockServer]()
+[MockServer](https://github.com/SummerWindL/imooc-security/blob/master/imooc-security-demo/src/main/java/com/imooc/wiremock/MockServer.java)
 
 ### 使用swagger2开发接口</br>
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
