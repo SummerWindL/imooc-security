@@ -3,7 +3,7 @@
 `day06 拦截器`</br>
 `day07 wiremock`</br>
 
-------异步处理REST服务</br>
+异步处理REST服务</br>
 
 1、使用Runnable异步处理Rest服务</br>
 
@@ -11,8 +11,8 @@
 
 3、异步处理配置（过滤处理）</br>
 
-###伪代码</br>
-*1、
+#伪代码</br>
+  1、
         ` Callable<String> result = new Callable<String>() {`
 
         ` @Override`
@@ -23,7 +23,7 @@
         `   return "success";`
         ` }`
         `};`
-*2、
+  2、
       ` String orderNumber = RandomStringUtils.randomNumeric(8);//生成八位随机数订单号`
       ` mockQueue.setPlaceOrder(orderNumber);//模拟放入消息队列`
 
