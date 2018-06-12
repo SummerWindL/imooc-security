@@ -31,7 +31,7 @@ public class MyUserDetailesService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//根据用户名查找用户信息
-		logger.info("登陆用户名："+username);
+		logger.info(username+"：你即将失去宝宝 ):");
 		//根据查找到的用户信息判断用户是否被冻结
 		String password = passwordEncoder.encode("123456");
 		logger.info("数据库密码是："+password);
