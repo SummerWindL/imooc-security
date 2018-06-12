@@ -61,7 +61,7 @@ $ java -jar wiremock-standalone-2.18.0.jar --port 8062</br>
 # 使用Spring Security开发基于表单的登录
 
 * spring security过滤器链
-     
+ ![filterchina](/img/spring-security.png)
 
 * 自定义用户认证逻辑
 
@@ -70,4 +70,4 @@ $ java -jar wiremock-standalone-2.18.0.jar --port 8062</br>
 	 
 	 处理用户校验逻辑              UserDetails
  	
-	 处理密码加密解密			     PasswordEncoder(使用crypto包中的)
+	 处理密码加密解密	       PasswordEncoder(使用crypto包中的)
