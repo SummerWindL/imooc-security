@@ -3,7 +3,7 @@
 `day06 拦截器`</br>
 `day07 wiremock伪造REST服务`</br>
 
-## 使用wiremock伪造服务
+### 使用wiremock伪造服务
 服务端：[wiremock-standalone-2.18.0.jar](http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.18.0/wiremock-standalone-2.18.0.jar)</br>
 **指定端口启动服务**:
 $ java -jar wiremock-standalone-2.18.0.jar --port 8062</br>
@@ -56,6 +56,18 @@ $ java -jar wiremock-standalone-2.18.0.jar --port 8062</br>
         mockQueue.setPlaceOrder(orderNumber);//模拟放入消息队列
         DeferredResult<String> result = new DeferredResult<String>();
         deferredResultHolder.getMap().put(orderNumber, result);
-          
-        
 
+
+# 使用Spring Security开发基于表单的登录
+
+* spring security过滤器链
+     
+
+* 自定义用户认证逻辑
+
+***
+     处理用户信息获取逻辑        **实现UserDetailsService** 
+	 
+	 处理用户校验逻辑              UserDetails
+ 	
+	 处理密码加密解密			     PasswordEncoder(使用crypto包中的)
