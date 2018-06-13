@@ -4,6 +4,7 @@
 `day07 wiremock伪造REST服务`</br>
 `day08 自定义用户认证逻辑`</br>
 `day09 个性化用户认证流程(1)`</br>
+`day10 个性化用户认证流程(2)`</br>
 
 ### 使用wiremock伪造服务
 服务端：[wiremock-standalone-2.18.0.jar](http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.18.0/wiremock-standalone-2.18.0.jar)</br>
