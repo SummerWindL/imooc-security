@@ -124,7 +124,7 @@ spring security原理
 	}
 	}
 
-## 个性化用户认证流程
+## 个性化用户认证流程（二）
 >1、自定义登陆页面          http.formLogin().loginPage("/imooc-signIn.html")
 
 >2、自定义登陆成功处理      AuthenticationSuccessHandler
@@ -134,3 +134,4 @@ spring security原理
 * spring security 默认成功跳转继承类 SavedRequestAwareAuthenticationSuccessHandler
 * spring security 默认失败跳转继承类
 SimpleUrlAuthenticationFailureHandler
+
