@@ -109,7 +109,6 @@ spring security原理
 	
 	}
 
-<h1>
 
 	public class BrowserProperties {
 
@@ -124,3 +123,14 @@ spring security原理
 		this.loginPage = loginPage;
 	}
 	}
+
+## 个性化用户认证流程
+>1、自定义登陆页面          http.formLogin().loginPage("/imooc-signIn.html")
+
+>2、自定义登陆成功处理      AuthenticationSuccessHandler
+
+>3、自定义登陆失败处理      AuthenticationFailureHandler
+
+* spring security 默认成功跳转继承类 SavedRequestAwareAuthenticationSuccessHandler
+* spring security 默认失败跳转继承类
+SimpleUrlAuthenticationFailureHandler
