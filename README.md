@@ -5,6 +5,8 @@
 `day08 自定义用户认证逻辑`</br>
 `day09 个性化用户认证流程(1)`</br>
 `day10 个性化用户认证流程(2)`</br>
+`day11 个性化定制图形验证码`</br>
+`day12 记住我配置及原理`
 
 ### 使用wiremock伪造服务
 服务端：[wiremock-standalone-2.18.0.jar](http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.18.0/wiremock-standalone-2.18.0.jar)</br>
@@ -136,3 +138,55 @@ spring security原理
 * spring security 默认失败跳转继承类
 SimpleUrlAuthenticationFailureHandler
 
+## 个性化定制图形验证码基于配置方式（略）
+
+## 记住我配置及原理
+
+![spring1](/img/remember-me.png)
+
+![spring1](/img/remember-me2.png)
+
+> ### 配置
+>1、页面添加记住我checkbox，name必须是remember-me
+>
+	<tr>
+		<td colspan="2"><input name ="remember-me" type="checkbox" value="true"/>记住我</td>
+	</tr>
+
+>效果
+<tr>
+				<td colspan="2"><input name ="remember-me" type="checkbox" value="true"/>记住我</td>
+			</tr>
+
+>2、BrowserProperties.java新增过期时间
+>private int rememberSeconds = 3600;</br>
+
+BrowserSecurityConfig新增 persistentTokenRepository方法</br>
+
+```	/**
+* 记住我配置
+* @return
+*/
+@Bean
+public PersistentTokenRepository persistentTokenRepository() {
+JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+tokenRepository.setDataSource(dataSource);
+tokenRepository.setCreateTableOnStartup(true);//启动时系统自动建立这张表
+return tokenRepository;
+}
+```
+
+需要引入<br>
+	
+	@Autowired
+	private DataSource dataSource;
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
+>3、BrowserSecurityConfig的configure方法配置登陆动作<br>
+``	.and()
+	.rememberMe()
+		.tokenRepository(persistentTokenRepository())
+		.tokenValiditySeconds(securityProperties.getBrowser().getRememberSeconds())
+		.userDetailsService(userDetailsService)
+``

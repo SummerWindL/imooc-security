@@ -12,7 +12,7 @@ import com.imooc.security.core.validate.code.ValidateCodeGenerator;
  *@action(作用)
  *@instruction
  */
-@Component("imageCodeGenerator")
+//@Component("imageCodeGenerator")
 public class DemoImageCodeGenerator implements ValidateCodeGenerator{
 
 	@Override
