@@ -6,7 +6,8 @@
 `day09 个性化用户认证流程(1)`</br>
 `day10 个性化用户认证流程(2)`</br>
 `day11 个性化定制图形验证码`</br>
-`day12 记住我配置及原理`
+`day12 记住我配置及原理`</br>
+`day13 短信验证码发送`
 
 ### 使用wiremock伪造服务
 服务端：[wiremock-standalone-2.18.0.jar](http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.18.0/wiremock-standalone-2.18.0.jar)</br>
@@ -190,3 +191,6 @@ return tokenRepository;
 		.tokenValiditySeconds(securityProperties.getBrowser().getRememberSeconds())
 		.userDetailsService(userDetailsService)
 ``
+
+## 短信验证码发送（层级架构）
+![spring1](/img/recode.png)

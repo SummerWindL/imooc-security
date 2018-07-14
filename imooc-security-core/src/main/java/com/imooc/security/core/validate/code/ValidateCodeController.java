@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import com.imooc.security.core.properties.SecurityProperties;
+import com.imooc.security.core.validate.code.sms.SmsCodeSender;
 
 /**
  *@date 2018年6月14日-下午8:54:35
@@ -38,17 +40,31 @@ public class ValidateCodeController {
 	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 	
 	@Autowired
-	private SecurityProperties securityProperties;
+	private ValidateCodeGenerator imageCodeGenerator;
 	
 	@Autowired
-	private ValidateCodeGenerator imageCodeGenerator;
+	private ValidateCodeGenerator smsCodeGenerator;
+	
+	@Autowired
+	private SmsCodeSender smsCodeSender;
 	
 	@GetMapping("/code/image")
 	public void createCode(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		ImageCode imageCode = imageCodeGenerator.generate(new ServletWebRequest(request));
+		ImageCode imageCode = (ImageCode) imageCodeGenerator.generate(new ServletWebRequest(request));
 		sessionStrategy.setAttribute(new ServletWebRequest(request), SESSION_KEY, imageCode);
 //		response.setContentType("image/jpeg");
 		ImageIO.write(imageCode.getImage(), "JPEG", response.getOutputStream());
+	}
+	
+	@GetMapping("/code/sms")
+	public void createSmsCode(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletRequestBindingException {
+		ValidateCode smsCode = smsCodeGenerator.generate(new ServletWebRequest(request));
+		sessionStrategy.setAttribute(new ServletWebRequest(request), SESSION_KEY, smsCode);
+//		response.setContentType("image/jpeg");
+		//向手机发送短信验证码
+		//从请求拿手机号
+		String mobile = ServletRequestUtils.getRequiredStringParameter(request, "mobile");
+		smsCodeSender.send(mobile, smsCode.getCode());
 	}
 
 }
